@@ -41,12 +41,14 @@ apt_autoremove_complete() {
 
 install_nginx () {
     dpkg -s $nginx &> /dev/null
-    if [[ $? -ne 1 ]]; then
-      echo -e "\n  $greenminus  nginx already installed - skipping"
-    else
-    	echo -e "\n  $greenplus installing nginx"
-      apt_update && apt_update_complete && apt -y install nginx
-      echo -e "\n  $greenplus  nginx - installed "
+    if [ $? -ne 0 ]
+        then
+            echo -e "\n  $greenplus installing nginx"
+            apt_update && apt_update_complete && apt -y install nginx
+            echo -e "\n  $greenplus  nginx - installed "
+
+        else
+            echo -e "\n  $greenminus  nginx already installed - skipping"
     fi
     }
 
