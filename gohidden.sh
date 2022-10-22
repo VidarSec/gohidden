@@ -44,7 +44,7 @@ install_nginx () {
     if [ $? -ne 0 ]
         then
             echo -e "\n  $greenplus installing nginx"
-            apt_update && apt_update_complete && apt -y install nginx
+            apt -y install nginx
             echo -e "\n  $greenplus  nginx - installed "
 
         else
