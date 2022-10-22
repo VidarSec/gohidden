@@ -20,6 +20,21 @@ apt_autoremove() {
     eval apt -y autoremove
     }
 
+apt_update_complete() {
+    echo -e "\n  $greenplus apt update - complete"
+    }
+
+apt_upgrade_complete() {
+    echo -e "\n  $greenplus apt upgrade - complete"
+    }
+
+apt_autoremove_complete() {
+    echo -e "\n  $greenplus apt autoremove - complete"
+    }
+
 apt_update
 apt_upgrade
 apt_autoremove
+apt_update_complete
+apt_upgrade_complete
+apt_autoremove_complete
