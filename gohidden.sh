@@ -40,7 +40,7 @@ apt_autoremove_complete() {
     }
 
 install_nginx () {
-    if [[ -f /usr/bin/nginx ]]; then
+    if [[ -f /etc/nginx ]]; then
       echo -e "\n  $greenminus  nginx already installed - skipping"
     else
     	echo -e "\n  $greenplus installing nginx"
