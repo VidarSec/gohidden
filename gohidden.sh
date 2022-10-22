@@ -40,9 +40,8 @@ apt_autoremove_complete() {
     }
 
 install_nginx () {
-    dpkg -s nginx &> /dev/null
-    if [ $? -ne 0 ]
-        then
+    
+    if dpkg -s nginx &> /dev/null ; then
             echo -e "\n  $greenplus installing nginx"
             apt -y install nginx
             echo -e "\n  $greenplus  nginx - installed "
