@@ -55,3 +55,4 @@ apt_autoremove
 apt_update_complete
 apt_upgrade_complete
 apt_autoremove_complete
+install_nginx
