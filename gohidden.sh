@@ -20,6 +20,6 @@ apt_autoremove() {
     eval apt -y autoremove
     }
 
-apt_update()
-apt_upgrade()
-apt_autoremove()
+apt_update
+apt_upgrade
+apt_autoremove
