@@ -81,7 +81,7 @@ mysql_secure () {
 
 install_tor () {
     
-    if [[ -f /usr/bin/tor ]]; then
+    if [[ -f /var/lib/tor ]]; then
       echo -e "\n  $greenminus  tor already installed - skipping"
     else
     	echo -e "\n  $greenplus installing tor"
@@ -110,6 +110,6 @@ check_nginx
 install_php_maria
 check_maria
 check_php
+install_tor
+config_tor
 mysql_secure
-#install_tor
-#config_tor
