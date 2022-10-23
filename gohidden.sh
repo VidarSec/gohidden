@@ -53,7 +53,7 @@ install_nginx () {
 check_nginx () {
     systemctl start nginx
     systemctl enable nginx
-    systemctl status nginx
+    #systemctl status nginx
 }
 
 # Installing PHP and MariaDB Server
@@ -65,13 +65,13 @@ install_php_maria () {
 check_maria () {
     systemctl start mariadb
     systemctl enable mariadb
-    systemctl status mariadb
+    #systemctl status mariadb
 }
 
 check_php () {
     systemctl start php7.4-fpm
     systemctl enable php7.4-fpm
-    systemctl status php7.4-fpm
+    #systemctl status php7.4-fpm
 }
 
 # mysql secure
