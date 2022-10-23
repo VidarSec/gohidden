@@ -39,6 +39,46 @@ apt_autoremove_complete() {
     echo -e "\n  $greenplus apt autoremove - complete"
     }
 
+install_nginx () {
+    
+    if [[ -f /var/lib/nginx ]]; then
+      echo -e "\n  $greenminus  nginx already installed - skipping"
+    else
+    	echo -e "\n  $greenplus installing nginx"
+      apt_update && apt_update_complete && apt -y install nginx
+      echo -e "\n  $greenplus  nginx - installed "
+
+    fi
+    }
+check_nginx () {
+    systemctl start nginx
+    systemctl enable nginx
+    systemctl status nginx
+}
+
+# Installing PHP and MariaDB Server
+install_php_maria () {
+    apt install php php-mysql php-fpm php-curl php-gd php-intl php-mbstring php-soap php-xml php-xmlrpc php-zip mariadb-server mariadb-client
+
+}
+
+check_maria () {
+    systemctl start mariadb
+    systemctl enable mariadb
+    systemctl status mariadb
+}
+
+check_php () {
+    systemctl start php7.4-fpm
+    systemctl enable php7.4-fpm
+    systemctl status php7.4-fpm
+}
+
+# mysql secure
+mysql_secure () {
+    mysql_secure_installation
+}
+
 install_tor () {
     
     if [[ -f /usr/bin/tor ]]; then
@@ -59,23 +99,17 @@ config_tor () {
     service tor restart
 }
 
-install_nginx () {
-    
-    if [[ -f /var/lib/nginx ]]; then
-      echo -e "\n  $greenminus  nginx already installed - skipping"
-    else
-    	echo -e "\n  $greenplus installing nginx"
-      apt_update && apt_update_complete && apt -y install nginx
-      echo -e "\n  $greenplus  nginx - installed "
-    fi
-    }
-
 apt_update
 apt_upgrade
 apt_autoremove
 apt_update_complete
 apt_upgrade_complete
 apt_autoremove_complete
-install_tor
-config_tor
 install_nginx
+check_nginx
+install_php_maria
+check_maria
+check_php
+mysql_secure
+#install_tor
+#config_tor
