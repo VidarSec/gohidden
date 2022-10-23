@@ -70,11 +70,6 @@ install_nginx () {
     fi
     }
 
-config_tor () {
-    cd /etc/nginx/sites-enabled
-    
-}
-
 apt_update
 apt_upgrade
 apt_autoremove
