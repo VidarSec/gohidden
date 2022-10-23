@@ -38,8 +38,35 @@ Exit out of the MySQL command prompt by typing.
 MariaDB [(none)]> exit
 ```  
 
+Output:
+```
+root@server:~# mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 62
+Server version: 10.5.11-MariaDB-1 Debian 11
 
-## After use with ./gohidden.sh
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE wordpress_db;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> 
+MariaDB [(none)]> CREATE USER 'wordpress_user'@'localhost' IDENTIFIED BY 'password';
+Query OK, 0 rows affected (0.004 sec)
+
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON wordpress_db.* to wordpress_user@'localhost';
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [(none)]> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [(none)]> exit   
+Bye
+```
+---
+## Edit nginx for .onion
 ### nano /etc/nginx/nginx.conf
 Remove hash(#) from the following lines:
 
