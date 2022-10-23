@@ -39,9 +39,29 @@ apt_autoremove_complete() {
     echo -e "\n  $greenplus apt autoremove - complete"
     }
 
+install_tor () {
+    
+    if [[ -f /usr/bin/tor ]]; then
+      echo -e "\n  $greenminus  tor already installed - skipping"
+    else
+    	echo -e "\n  $greenplus installing tor"
+      apt_update && apt_update_complete && apt -y install tor
+      echo -e "\n  $greenplus  tor - installed "
+    fi
+    }
+
+#config tor
+config_tor () {
+    echo HiddenServiceDir /var/lib/tor/hidden_service >> /etc/tor/torrc
+    echo HiddenServicePort 80 127.0.0.1:80 >> /etc/tor/torrc
+    service tor start
+    service tor status
+    service tor restart
+}
+
 install_nginx () {
     
-    if [[ -f /usr/bin/nginx ]]; then
+    if [[ -f /var/lib/nginx ]]; then
       echo -e "\n  $greenminus  nginx already installed - skipping"
     else
     	echo -e "\n  $greenplus installing nginx"
@@ -50,10 +70,17 @@ install_nginx () {
     fi
     }
 
+config_tor () {
+    cd /etc/nginx/sites-enabled
+    
+}
+
 apt_update
 apt_upgrade
 apt_autoremove
 apt_update_complete
 apt_upgrade_complete
 apt_autoremove_complete
+install_tor
+config_tor
 install_nginx
