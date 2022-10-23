@@ -67,6 +67,7 @@ Bye
 ```
 ---
 ## Edit nginx for .onion
+---
 ### nano /etc/nginx/nginx.conf
 Remove hash(#) from the following lines:
 
