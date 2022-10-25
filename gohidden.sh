@@ -94,6 +94,7 @@ install_tor () {
 config_tor () {
     echo HiddenServiceDir /var/lib/tor/hidden_service >> /etc/tor/torrc
     echo HiddenServicePort 80 127.0.0.1:80 >> /etc/tor/torrc
+    echo HiddenServiceVersion 3 >> /etc/tor/torrc
     service tor start
     service tor status
     service tor restart
